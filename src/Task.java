@@ -4,9 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by aspknopixx on 1/17/2016.
- */
+
 public class Task {
    static ArrayList<File> list = new ArrayList<>();
     static ArrayList<String> listWrite = new ArrayList<>();
@@ -49,6 +47,7 @@ public class Task {
     }
     // Просматриваем строки и подсчитываем по маске
     private static void MathCount(ArrayList<File> s,String keyword){
+        //Создаем 10 параллельных потоков.
         ExecutorService service = Executors.newFixedThreadPool(10);
         for (File f : s) {
             if (!f.isFile()) {
@@ -64,7 +63,7 @@ public class Task {
                             if (serach.contains(keyword) || serach.isEmpty()){
                                 ++lines;
                             }
-                            listWrite.add(Thread.currentThread().getName() + " : "+ f.getName() + " : "+ String.valueOf(lines));
+                            listWrite.add(Thread.currentThread().getName() + " => "+ f.getName() + " => "+ String.valueOf(lines));
                         }
                         System.out.println("Поток: " + Thread.currentThread().getName() + ". Файл: " + f.getName() + ". Количество строк: " + lines);
                     } catch (IOException e) {
