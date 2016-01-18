@@ -64,7 +64,7 @@ public class Task {
                             if (serach.contains(keyword) || serach.isEmpty()){
                                 ++lines;
                             }
-                            listWrite.add(Thread.currentThread().getName() + " : "+ f.getName() + " : "+ String.valueOf(lines));
+                            listWrite.add(Thread.currentThread().getName() + " => "+ f.getName() + " => "+ String.valueOf(lines));
                         }
                         System.out.println("Поток: " + Thread.currentThread().getName() + ". Файл: " + f.getName() + ". Количество строк: " + lines);
                     } catch (IOException e) {
